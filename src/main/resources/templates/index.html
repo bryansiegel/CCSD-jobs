@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jobs</title>
+</head>
+<body>
+
+<ul th:each="job : ${jobs}">
+    <li th:text="${job.jobTitle}"></li>
+    <li th:text="${job.referenceCode}"></li>
+    <li th:text="${job.division}"></li>
+    <li th:text="${job.classification}"></li>
+
+</ul>
+
+</body>
+</html>
