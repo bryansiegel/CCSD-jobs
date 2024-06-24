@@ -1,0 +1,25 @@
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/scripts.js"></script>
+<script src="/js/dataTables.min.js"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        jQuery('#adminTable').DataTable({
+            layout: {
+                topStart: 'pageLength',
+                topEnd: {
+                    search: {
+                        //text: '<p class="control has-icons-left"><input type="search" class="input is-rounded testClass"><span class="icon is-small is-left"><i class="fa-solid fa-magnifying-glass"></i></span></p>',
+                        placeholder: 'Rechercher dans la liste'
+                    },
+                },
+                bottomStart: 'info',
+                bottomEnd: 'paging'
+            },
+            initComplete: function () {
+                $('div.dt-search input').addClass('form-control')
+            }
+        });
+    });
+</script>

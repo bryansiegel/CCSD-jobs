@@ -1,0 +1,30 @@
+<div class="row">
+    <h1 class="pb-3">Dashboard</h1>
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+        <!-- Project Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Jobs</h6>
+            </div>
+            <div class="card-body">
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>Job Title</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="job : ${jobs}">
+                            <td th:text="${job.jobTitle}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
