@@ -3,16 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <title>Jobs</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/dataTables.min.css"/>
+    <link rel="stylesheet" href="/css/public-styles.css"/>
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="/js/fontawesome.all.js"></script>
+
 </head>
 <body>
 
-<ul th:each="job : ${jobs}">
-    <li th:text="${job.jobTitle}"></li>
-    <li th:text="${job.referenceCode}"></li>
-    <li th:text="${job.division}"></li>
-    <li th:text="${job.classification}"></li>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <header>
+                <div class="px-3 py-2 text-bg-dark border-bottom">
+                    <div class="container">
+                        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                            <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-decoration-none">
+                                <img src="/img/CCSD-logo-blue.png" alt="jobs" height="50px"/>
+                            </a>
 
-</ul>
+                            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                                <li>
+                                    <a href="#" class="nav-link text-secondary">
+                                        <i class="fa-solid fa-house"></i>
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link text-secondary">
+                                        <i class="fa-solid fa-building"></i>
+                                        Jobs
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
 
+
+    <div class="px-4 py-3 my-3 text-center">
+        <h1 class="display-5 fw-bold text-body-emphasis">Jobs</h1>
+        <div class="col-lg-6 mx-auto">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <table id="publicTable" class="table table-striped" style="width:100%;">
+                <thead>
+                <tr>
+                    <td>Job Title</td>
+                    <td>Job Family</td>
+                    <td>Classification</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="job : ${jobs}">
+                    <!--                    <td></td>-->
+                    <td th:text="${job.jobTitle}"></td>
+                    <td th:text="${job.jobFamily}"></td>
+                    <td th:text="${job.classification}"></td>
+                    <td><a href="" class="btn btn-primary">View</a></td>
+                    <td><a th:href="${job.applyLink}" class="btn btn-danger">Apply</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/scripts.js"></script>
+<script src="/js/dataTables.min.js"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        jQuery('#publicTable').DataTable({
+            layout: {
+                topStart: 'pageLength',
+                topEnd: {
+                    search: {
+                        //text: '<p class="control has-icons-left"><input type="search" class="input is-rounded testClass"><span class="icon is-small is-left"><i class="fa-solid fa-magnifying-glass"></i></span></p>',
+                        placeholder: 'Rechercher dans la liste'
+                    },
+                },
+                bottomStart: 'info',
+                bottomEnd: 'paging'
+            },
+            initComplete: function () {
+                $('div.dt-search input').addClass('form-control')
+            }
+        });
+    });
+</script>
 </body>
 </html>
