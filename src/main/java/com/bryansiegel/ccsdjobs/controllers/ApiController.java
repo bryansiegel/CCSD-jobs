@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class ApiJobsController {
+public class ApiController {
 
     private final JobsRepository jobsRepository;
 
     @Autowired
-    public ApiJobsController(JobsRepository jobsRepository) {
+    public ApiController(JobsRepository jobsRepository) {
         this.jobsRepository = jobsRepository;
     }
 

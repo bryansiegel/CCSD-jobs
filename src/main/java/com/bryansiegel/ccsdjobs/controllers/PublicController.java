@@ -7,12 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class JobsController {
+public class PublicController {
 
     private final JobsRepository _jobsRepository;
 
     @Autowired
-    public JobsController(JobsRepository jobsRepository) {
+    public PublicController(JobsRepository jobsRepository) {
         _jobsRepository = jobsRepository;
     }
 
@@ -21,7 +21,7 @@ public class JobsController {
     @GetMapping("/")
     private String index(Model model) {
         model.addAttribute("jobs", _jobsRepository.findAll());
-        return "index";
+        return "public/index";
     }
 
     //create
