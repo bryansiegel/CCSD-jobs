@@ -24,8 +24,4 @@ public class PublicController {
         return "public/index";
     }
 
-    //create
-    //update
-    //edit
-    //delete
 }
