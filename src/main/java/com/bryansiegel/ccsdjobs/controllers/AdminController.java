@@ -8,10 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -62,7 +62,46 @@ public class AdminController {
         return "redirect:/admin/jobs/";
     }
 
+    //edit
+    @GetMapping("/admin/jobs/edit/{id}")
+    public String editJobs(@PathVariable Long id, Model model) {
 
+        Job job = jobsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("jobs", job);
+
+        return "admin/jobs/edit.html";
+    }
+
+    //update
+    @PostMapping("admin/jobs/update/{id}")
+    public String updateJob(@ModelAttribute Job job, @PathVariable Long id, @RequestParam String jobTitle, BindingResult result) {
+
+        if(result.hasErrors()) {
+            return "admin/jobs/create.html";
+        }
+
+        Optional<Job> optionalJob = jobsRepository.findById(id);
+
+        if(optionalJob.isPresent()) {
+            Job jobModel = optionalJob.get();
+            jobModel.setJobTitle(jobTitle);
+
+            jobsRepository.save(jobModel);
+        }
+
+        return "redirect:/admin/jobs/";
+    }
+
+    //delete
+    @GetMapping("admin/jobs/delete/{id}")
+    public String deleteJob(@PathVariable Long id) {
+        Job job = jobsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid User Id:" + id));
+        jobsRepository.delete(job);
+
+        return "redirect:/admin/jobs/";
+    }
 
     //
 }

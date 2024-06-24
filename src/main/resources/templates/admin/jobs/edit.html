@@ -29,29 +29,24 @@
                         <div class="row justify-content-center align-items-center">
                             <div class="col-md-6 my-auto">
 
-                                <h1 class="pt-3">Edit A Index Of Form</h1>
+                                <h1 class="pt-3">Edit Job</h1>
 
-                                <form th:action="@{/admin/index-of-forms/update/{id}(id=${indexofforms.id})}"
-                                      th:object="${indexofforms}" method="post" enctype="multipart/form-data">
-
-                                    <div class="form-group">
-
-                                        <label for="formName">Form Name</label>
-                                        <input type="text" name="formName" th:field="${indexofforms.formName}"
-                                               id="formName"
-                                               placeholder="Form Name" class="form-control"/>
-                                        <span th:if="${#fields.hasErrors('formName')}"
-                                              th:errors="*{indexofforms.formName}"></span>
-                                    </div>
+                                <form th:action="@{/admin/jobs/update/{id}(id=${jobs.id})}"
+                                      th:object="${jobs}" method="post" enctype="multipart/form-data">
 
                                     <div class="form-group">
-                                        <label for="file">Form Upload</label>
-                                        <input type="file" name="file" id="file" placeholder="Form Upload"
-                                               accept="application/pdf" class="form-control"/>
+
+                                        <label for="jobTitle">Form Name</label>
+                                        <input type="text" name="jobTitle" th:field="${jobs.jobTitle}"
+                                               id="jobTitle"
+                                               placeholder="Job Title" class="form-control"/>
+                                        <span th:if="${#fields.hasErrors('jobTitle')}"
+                                              th:errors="*{jobs.jobTitle}"></span>
                                     </div>
 
                                     <div class="form-group pt-3">
                                         <input type="submit" value="Add Index Of Forms" class="btn btn-primary">
+                                    </div>
                                 </form>
                             </div>
                         </div>
