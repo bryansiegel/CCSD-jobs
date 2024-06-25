@@ -26,17 +26,12 @@
 
                             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                                 <li>
-                                    <a href="#" class="nav-link text-secondary">
-                                        <i class="fa-solid fa-house"></i>
-                                        Home
+                                    <a href="admin/dashboard/" class="nav-link text-secondary">
+                                        <i class="fa-solid fa-lock"></i>
+                                        Login
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="nav-link text-secondary">
-                                        <i class="fa-solid fa-building"></i>
-                                        Jobs
-                                    </a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -47,35 +42,36 @@
 
 
     <div class="px-4 py-3 my-3 text-center">
-        <h1 class="display-5 fw-bold text-body-emphasis">Jobs</h1>
+        <h1 class="display-5 fw-bold text-body-emphasis">CCSD Jobs</h1>
         <div class="col-lg-6 mx-auto">
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-8 mx-auto">
-            <table id="publicTable" class="table table-striped" style="width:100%;">
-                <thead>
-                <tr>
-                    <td>Job Title</td>
-                    <td>Job Family</td>
-                    <td>Classification</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="job : ${jobs}">
-                    <!--                    <td></td>-->
-                    <td th:text="${job.jobTitle}"></td>
-                    <td th:text="${job.jobFamily}"></td>
-                    <td th:text="${job.classification}"></td>
-                    <td><a href="" class="btn btn-primary">View</a></td>
-                    <td><a th:href="${job.applyLink}" class="btn btn-danger">Apply</a></td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div th:switch="${jobs}">
+                <h2 th:case="null">No Jobs yet!</h2>
+                <div th:case="*">
+                    <table id="publicTable" class="table table-striped" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="job : ${jobs}">
+                            <td th:text="${job.jobTitle}"></td>
 
+                            <td><a th:href="@{/admin/jobs/edit/{id}(id=${job.id})}"
+                                   class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                <a th:href="@{/admin/jobs/delete/{id}(id=${job.id})}"
+                                   class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
