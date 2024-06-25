@@ -56,17 +56,28 @@
                         <thead>
                         <tr>
                             <th>Job Title</th>
+                            <th>Job Category</th>
+                            <th>Created</th>
+                            <th>Updated</th>
                             <th></th>
+
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="job : ${jobs}">
                             <td th:text="${job.jobTitle}"></td>
+                            <td>
+                                <span th:if="${job.jobCategory == 'admin'}">Administrative Personnel</span>
+                                <span th:if="${job.jobCategory == 'licensed'}">Licensed Personnel</span>
+                                <span th:if="${job.jobCategory == 'support'}">Support Professional</span>
+                            </td>
+                            <td th:text="${#temporals.format(job.createdAt, 'MMM-dd-yyyy')}"></td>
+                            <td th:text="${#temporals.format(job.updatedAt, 'MMM-dd-yyyy')}"></td>
 
-                            <td><a th:href="@{/admin/jobs/edit/{id}(id=${job.id})}"
-                                   class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                <a th:href="@{/admin/jobs/delete/{id}(id=${job.id})}"
-                                   class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a></td>
+                            <td><a th:href="@{/job/details/{id}(id=${job.id})}"
+                                   class="btn btn-info"><i class="fa-solid fa-circle-arrow-right"></i> View</a>
+                                <a th:href="${job.applyLink}"
+                                   class="btn btn-danger" target="_blank"><i class="fa-solid fa-file-import"></i> Apply</a></td>
                         </tr>
                         </tbody>
                     </table>
