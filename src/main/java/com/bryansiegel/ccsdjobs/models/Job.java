@@ -12,7 +12,7 @@ public class Job {
     public Job() {
     }
 
-    public Job(Long id, String jobTitle, String referenceCode, String division, String classification, String termsOfEmployment, String flaStatus, String applyLink, String jobFamily, String positionSummary, String positionExpectations, String distinguishingCharacteristics, String knowledgeSkillsAndAbilities, String documentsRequiredAtTimeOfApplication, String examplesOfAssignedWorkAreas, String workEnvironment, String examplesOfEquipmentSuppliesUsedToPerformTasks, String essentialDutiesAndResponsibilities, String positionRequirements, String salaryAndBenefits, String aaEoeStatement, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Job(Long id, String jobTitle, String referenceCode, String division, String classification, String termsOfEmployment, String flaStatus, String applyLink, String jobFamily, String jobCategory, String positionSummary, String positionExpectations, String distinguishingCharacteristics, String knowledgeSkillsAndAbilities, String documentsRequiredAtTimeOfApplication, String examplesOfAssignedWorkAreas, String workEnvironment, String examplesOfEquipmentSuppliesUsedToPerformTasks, String essentialDutiesAndResponsibilities, String positionRequirements, String salaryAndBenefits, String aaEoeStatement, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.jobTitle = jobTitle;
         this.referenceCode = referenceCode;
@@ -22,6 +22,7 @@ public class Job {
         this.flaStatus = flaStatus;
         this.applyLink = applyLink;
         this.jobFamily = jobFamily;
+        this.jobCategory = jobCategory;
         this.positionSummary = positionSummary;
         this.positionExpectations = positionExpectations;
         this.distinguishingCharacteristics = distinguishingCharacteristics;
@@ -50,6 +51,7 @@ public class Job {
     private String flaStatus;
     private String applyLink;
     private String jobFamily;
+    private String jobCategory;
 
     @Lob
     @Column(columnDefinition = "TEXT")
@@ -178,6 +180,14 @@ public class Job {
         this.jobFamily = jobFamily;
     }
 
+    public String getJobCategory() {
+        return jobCategory;
+    }
+
+    public void setJobCategory(String jobCategory) {
+        this.jobCategory = jobCategory;
+    }
+
     public String getPositionSummary() {
         return positionSummary;
     }
@@ -302,6 +312,7 @@ public class Job {
                 ", flaStatus='" + flaStatus + '\'' +
                 ", applyLink='" + applyLink + '\'' +
                 ", jobFamily='" + jobFamily + '\'' +
+                ", jobCategory='" + jobCategory + '\'' +
                 ", positionSummary='" + positionSummary + '\'' +
                 ", positionExpectations='" + positionExpectations + '\'' +
                 ", distinguishingCharacteristics='" + distinguishingCharacteristics + '\'' +

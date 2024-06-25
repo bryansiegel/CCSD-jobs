@@ -26,7 +26,8 @@
                 <div class="row">
                     <div class="container">
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-md-6 my-auto">
+
+                            <div class="col my-auto">
 
                                 <h1>Create A Job</h1>
 
@@ -46,6 +47,17 @@
                                         <span th:if="${#fields.hasErrors('jobTitle')}"
                                               th:errors="*{jobs.jobTitle}"></span>
                                     </div>
+<!--                                    Job Category-->
+                                    <div class="form-group">
+                                        <label for="jobCategory">Job Category</label>
+                                        <select name="jobCategory" id="jobCategory" class="form-select">
+                                            <option name="defaultMessage" value="">Please Select A Value Below</option>
+                                            <option name="admin" value="admin">Administrative Personnel</option>
+                                            <option name="licensed" value="licensed">Licensed Personnel</option>
+                                            <option name="support" value="support">Support Staff</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="applyLink">Apply Link</label>
                                         <input type="text" name="applyLink" th:field="${jobs.applyLink}"
@@ -135,7 +147,7 @@
                                         <label for="positionSummary">Position Summary</label>
                                         <textarea type="text" name="positionSummary" th:field="${jobs.positionSummary}"
                                                   id="positionSummary"
-                                                  placeholder="positionSummary" class="form-control"
+                                                  placeholder="positionSummary" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Position Summary is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -150,7 +162,7 @@
                                         <textarea type="text" name="positionSummary"
                                                   th:field="${jobs.essentialDutiesAndResponsibilities}"
                                                   id="essentialDutiesAndResponsibilities"
-                                                  placeholder="essentialDutiesAndResponsibilities" class="form-control"
+                                                  placeholder="essentialDutiesAndResponsibilities" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Essential Duties and Responsibilities is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -168,7 +180,7 @@
                                         <textarea type="text" name="positionRequirements"
                                                   th:field="${jobs.positionRequirements}"
                                                   id="positionRequirements"
-                                                  placeholder="positionRequirements" class="form-control"
+                                                  placeholder="positionRequirements" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Position Requirements is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -182,7 +194,7 @@
                                         <textarea type="text" name="salaryAndBenefits"
                                                   th:field="${jobs.salaryAndBenefits}"
                                                   id="salaryAndBenefits"
-                                                  placeholder="salaryAndBenefits" class="form-control"
+                                                  placeholder="salaryAndBenefits" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Salary and Benefits is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -195,7 +207,7 @@
                                         <label for="aaEoeStatement">AA/EOE Statement</label>
                                         <textarea type="text" name="aaEoeStatement" th:field="${jobs.aaEoeStatement}"
                                                   id="aaEoeStatement"
-                                                  placeholder="aaEoeStatement" class="form-control"
+                                                  placeholder="aaEoeStatement" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('AA/EOE Statement is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -210,7 +222,7 @@
                                         <textarea type="text" name="distinguishingCharacteristics"
                                                   th:field="${jobs.distinguishingCharacteristics}"
                                                   id="distinguishingCharacteristics"
-                                                  placeholder="Distinguishing Characteristics" class="form-control"
+                                                  placeholder="Distinguishing Characteristics" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Distinguishing Characteristics is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -225,7 +237,7 @@
                                         <textarea type="text" name="knowledgeSkillsAndAbilities"
                                                   th:field="${jobs.knowledgeSkillsAndAbilities}"
                                                   id="knowledgeSkillsAndAbilities"
-                                                  placeholder="Knowledge, Skills, and Abilities (Position Expectations)" class="form-control"
+                                                  placeholder="Knowledge, Skills, and Abilities (Position Expectations)" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Knowledge, Skills, and Abilities (Position Expectations) is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -239,7 +251,7 @@
                                         <textarea type="text" name="documentsRequiredAtTimeOfApplication"
                                                   th:field="${jobs.documentsRequiredAtTimeOfApplication}"
                                                   id="documentsRequiredAtTimeOfApplication"
-                                                  placeholder="Document(s) Required at Time of Application" class="form-control"
+                                                  placeholder="Document(s) Required at Time of Application" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Document(s) Required at Time of Application is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -253,7 +265,7 @@
                                         <textarea type="text" name="examplesOfAssignedWorkAreas"
                                                   th:field="${jobs.examplesOfAssignedWorkAreas}"
                                                   id="examplesOfAssignedWorkAreas"
-                                                  placeholder="Examples of Assigned Work Areas" class="form-control"
+                                                  placeholder="Examples of Assigned Work Areas" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Examples of Assigned Work Areas is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -267,7 +279,7 @@
                                         <textarea type="text" name="workEnvironment"
                                                   th:field="${jobs.workEnvironment}"
                                                   id="workEnvironment"
-                                                  placeholder="Work Environment" class="form-control"
+                                                  placeholder="Work Environment" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Work Environment is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -281,7 +293,7 @@
                                         <textarea type="text" name="examplesOfEquipmentSuppliesUsedToPerformTasks"
                                                   th:field="${jobs.examplesOfEquipmentSuppliesUsedToPerformTasks}"
                                                   id="examplesOfEquipmentSuppliesUsedToPerformTasks"
-                                                  placeholder="Examples of Equipment/Supplies Used to Perform Tasks" class="form-control"
+                                                  placeholder="Examples of Equipment/Supplies Used to Perform Tasks" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Examples of Equipment/Supplies Used to Perform Tasks is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -295,7 +307,7 @@
                                         <textarea type="text" name="positionExpectations"
                                                   th:field="${jobs.positionExpectations}"
                                                   id="positionExpectations"
-                                                  placeholder="Position Expectations" class="form-control"
+                                                  placeholder="Position Expectations" class="form-control textarea-editor"
                                                   required
                                                   oninvalid="this.setCustomValidity('Position Expectations is Required')"
                                                   oninput="this.setCustomValidity('')"
@@ -308,7 +320,10 @@
                                         <input type="submit" value="Add Index Of Form" class="btn btn-primary">
                                     </div>
                                 </form>
-                            </div>
+                            </div><!-- end column-->
+
+
+
                         </div>
                     </div>
                 </div>
@@ -320,6 +335,18 @@
 
 <div th:include="admin/fragments/scripts.html"></div>
 
-
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // jQuery('#jobsTable').DataTable();
+        $('.textarea-editor').summernote({
+            height: 400, // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            focus: true // set focus to editable area after initializing summernote
+        });
+    });
+</script>
 </body>
 </html>
