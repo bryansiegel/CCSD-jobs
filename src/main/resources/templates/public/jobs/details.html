@@ -1,10 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <head>
     <meta charset="UTF-8">
     <title>Details</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/sb-admin-2.min.css"/>
+    <link rel="stylesheet" href="/css/dataTables.min.css">
+    <link rel="stylesheet" href="/css/public-styles.css">
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="/js/fontawesome.all.js"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet"/>
 </head>
 <body>
+<div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid pt-5 mt-5">
+            <div class="row">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+
+                        <div class="col my-auto">
+                            <img src="/img/CCSD-logo-blue.png" height="60" alt="CCSD" />
+
+                            <h1 th:text="${job.jobTitle}" style="color:#1771b7;font-weight:bold;" class="pt-5"></h1>
+
+                            <h3 class="pt-3" style="color:#1f497d;font-weight:bold;">Position Details</h3>
+
+                            <p th:if="${job.referenceCode != null}" style="margin-bottom:0px !important;">Reference Code: <span th:text="${job.referenceCode}"></span></p>
+                            <p th:if="${job.division != null}"  style="margin-bottom:0px !important;">Division: <span th:text="${job.division}"></span></p>
+                            <p th:if="${job.classification != null}"  style="margin-bottom:0px !important;">Classification: <span th:text="${job.classification}"></span></p>
+                            <p th:if="${job.termsOfEmployment != null}"  style="margin-bottom:0px !important;">Terms of Employment: <span th:text="${job.termsOfEmployment}"></span></p>
+                            <p th:if="${job.flaStatus != null}"  style="margin-bottom:0px !important;">FLSA STATUS: <span th:text="${job.flaStatus}"></span></p>
+
+                            <hr>
+
+                            <h3 class="pt-3" style="color:#1f497d;font-weight:bold;">Position Summary</h3>
+                            <p th:if="${job.positionSummary != null}" style="margin-bottom:0px !important;"><span th:utext="${job.positionSummary}"></span></p>
+
+                            <hr>
+
+                            <h3 class="pt-3" style="color:#1f497d;font-weight:bold;">Essential Duties and Responsibilities</h3>
+                            <p th:if="${job.essentialDutiesAndResponsibilities != null}" style="margin-bottom:0px !important;"><span th:utext="${job.essentialDutiesAndResponsibilities}"></span></p>
+
+                            <hr>
+                            <h3 class="pt-3" style="color:#1f497d;font-weight:bold;">Preferred Qualifications</h3>
+                            <p th:if="${job. != null}" style="margin-bottom:0px !important;"><span th:utext="${job.essentialDutiesAndResponsibilities}"></span></p>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 </body>
 </html>

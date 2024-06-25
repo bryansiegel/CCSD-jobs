@@ -3,6 +3,7 @@ package com.bryansiegel.ccsdjobs.models;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.internal.log.SubSystemLogging;
 
 import java.time.LocalDateTime;
 
@@ -12,7 +13,7 @@ public class Job {
     public Job() {
     }
 
-    public Job(Long id, String jobTitle, String referenceCode, String division, String classification, String termsOfEmployment, String flaStatus, String applyLink, String jobFamily, String jobCategory, String positionSummary, String positionExpectations, String distinguishingCharacteristics, String knowledgeSkillsAndAbilities, String documentsRequiredAtTimeOfApplication, String examplesOfAssignedWorkAreas, String workEnvironment, String examplesOfEquipmentSuppliesUsedToPerformTasks, String essentialDutiesAndResponsibilities, String positionRequirements, String salaryAndBenefits, String aaEoeStatement, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Job(Long id, String jobTitle, String referenceCode, String division, String classification, String termsOfEmployment, String flaStatus, String applyLink, String jobFamily, String jobCategory, String positionSummary, String positionExpectations, String distinguishingCharacteristics, String knowledgeSkillsAndAbilities, String documentsRequiredAtTimeOfApplication, String examplesOfAssignedWorkAreas, String workEnvironment, String examplesOfEquipmentSuppliesUsedToPerformTasks, String essentialDutiesAndResponsibilities, String positionRequirements, String salaryAndBenefits, String aaEoeStatement, String preferredQualifications, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.jobTitle = jobTitle;
         this.referenceCode = referenceCode;
@@ -35,6 +36,7 @@ public class Job {
         this.positionRequirements = positionRequirements;
         this.salaryAndBenefits = salaryAndBenefits;
         this.aaEoeStatement = aaEoeStatement;
+        this.preferredQualifications = preferredQualifications;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -100,6 +102,10 @@ public class Job {
     @Lob
     @Column(columnDefinition = "TEXT")
     private String aaEoeStatement;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String preferredQualifications;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -284,6 +290,14 @@ public class Job {
         this.aaEoeStatement = aaEoeStatement;
     }
 
+    public String getPreferredQualifications() {
+        return preferredQualifications;
+    }
+
+    public void setPreferredQualifications(String preferredQualifications) {
+        this.preferredQualifications = preferredQualifications;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -325,6 +339,7 @@ public class Job {
                 ", positionRequirements='" + positionRequirements + '\'' +
                 ", salaryAndBenefits='" + salaryAndBenefits + '\'' +
                 ", aaEoeStatement='" + aaEoeStatement + '\'' +
+                ", preferredQualifications='" + preferredQualifications + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';

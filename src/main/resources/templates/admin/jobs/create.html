@@ -188,6 +188,20 @@
                                         <span th:if="${#fields.hasErrors('positionRequirements')}"
                                               th:errors="*{jobs.positionRequirements}"></span>
                                     </div>
+<!--                                    text field-->
+                                    <div class="form-group">
+                                        <label for="preferredQualifications">Preferred Qualifications</label>
+                                        <textarea type="text" name="preferredQualifications"
+                                                  th:field="${jobs.preferredQualifications}"
+                                                  id="preferredQualifications"
+                                                  placeholder="Preferred Qualifications" class="form-control textarea-editor"
+                                                  required
+                                                  oninvalid="this.setCustomValidity('Preferred Qualifications is Required')"
+                                                  oninput="this.setCustomValidity('')"
+                                        ></textarea>
+                                        <span th:if="${#fields.hasErrors('preferredQualifications')}"
+                                              th:errors="*{jobs.preferredQualifications}"></span>
+                                    </div>
                                     <!--                                    text field-->
                                     <div class="form-group">
                                         <label for="salaryAndBenefits">Salary and Benefits</label>

@@ -31,7 +31,7 @@ public class PublicController {
     private String jobDetails(@PathVariable Long id, Model model) {
         Job job = _jobsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        model.addAttribute("jobs", job);
+        model.addAttribute("job", job);
 
         return "public/jobs/details";
 

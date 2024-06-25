@@ -98,6 +98,7 @@ public class AdminController {
             @RequestParam String salaryAndBenefits,
             @RequestParam String aaEoeStatement,
             @RequestParam String jobCategory,
+            @RequestParam String preferredQualifications,
 
             BindingResult result) {
 
@@ -130,6 +131,8 @@ public class AdminController {
             jobModel.setAaEoeStatement(aaEoeStatement);
             jobModel.setExamplesOfEquipmentSuppliesUsedToPerformTasks(examplesOfEquipmentSuppliesUsedToPerformTasks);
             jobModel.setJobCategory(jobCategory);
+            jobModel.setPreferredQualifications(preferredQualifications);
+
 
             jobsRepository.save(jobModel);
         }
