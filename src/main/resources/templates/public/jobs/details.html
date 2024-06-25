@@ -35,7 +35,7 @@
                             <h1 th:text="${job.jobTitle}" style="color:#1771b7;font-weight:bold;" class="pt-5"></h1>
 
                             <h3 class="pt-3" style="color:#1f497d;font-weight:bold;">Position Details</h3>
-
+                            <p th:if="${job.classCode != null}" style="margin-bottom:0px !important;">Class Code: <span th:text="${job.classCode}"></span></p>
                             <p th:if="${job.referenceCode != null}" style="margin-bottom:0px !important;">Reference Code: <span th:text="${job.referenceCode}"></span></p>
                             <p th:if="${job.division != null}"  style="margin-bottom:0px !important;">Division: <span th:text="${job.division}"></span></p>
                             <p th:if="${job.classification != null}"  style="margin-bottom:0px !important;">Classification: <span th:text="${job.classification}"></span></p>
@@ -53,8 +53,28 @@
                             <p th:if="${job.essentialDutiesAndResponsibilities != null}" style="margin-bottom:0px !important;"><span th:utext="${job.essentialDutiesAndResponsibilities}"></span></p>
 
                             <hr>
+
                             <h3 class="pt-3" style="color:#1f497d;font-weight:bold;">Preferred Qualifications</h3>
-                            <p th:if="${job. != null}" style="margin-bottom:0px !important;"><span th:utext="${job.essentialDutiesAndResponsibilities}"></span></p>
+                            <p th:if="${job.preferredQualifications != null}" style="margin-bottom:0px !important;"><span th:utext="${job.preferredQualifications}"></span></p>
+
+                            <hr>
+
+                            <h3 class="pt-3" style="color:#1f497d;font-weight:bold;">Position Expectations</h3>
+                            <p th:if="${job.positionExpectations != null}" style="margin-bottom:0px !important;"><span th:utext="${job.positionExpectations}"></span></p>
+
+                            <hr>
+
+                            <h3 class="pt-3" style="color:#1f497d;font-weight:bold;">Salary and Benefits</h3>
+                            <p th:if="${job.salaryAndBenefits != null}" style="margin-bottom:0px !important;"><span th:utext="${job.salaryAndBenefits}"></span></p>
+
+                            <h4 style="color:black; font-weight:bold;">AA/EOE Statement</h4>
+                            <p th:utext="${job.aaEoeStatement}"></p>
+
+                            <h4 style="color:black; font-weight:bold;">Job Revision Information</h4>
+                            <ul>
+                                <li th:text="${#temporals.format(job.createdAt, 'MMM-dd-yyyy')}"></li>
+                                <li th:text="${#temporals.format(job.updatedAt, 'MMM-dd-yyyy')}"></li>
+                            </ul>
 
 
 
