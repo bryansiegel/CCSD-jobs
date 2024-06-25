@@ -13,11 +13,21 @@
                     <thead>
                     <tr>
                         <td>Job Title</td>
+                        <td>Job Category</td>
+                        <td>Created</td>
+                        <td>Updated</td>
                     </tr>
                     </thead>
                     <tbody>
                         <tr th:each="job : ${jobs}">
                             <td th:text="${job.jobTitle}"></td>
+                            <td>
+                                <span th:if="${job.jobCategory == 'admin'}">Administrative Personnel</span>
+                                <span th:if="${job.jobCategory == 'licensed'}">Licensed Personnel</span>
+                                <span th:if="${job.jobCategory == 'support'}">Support Professional</span>
+                            </td>
+                            <td th:text="${#temporals.format(job.createdAt, 'MMM-dd-yyyy')}"></td>
+                            <td th:text="${#temporals.format(job.updatedAt, 'MMM-dd-yyyy')}"></td>
                         </tr>
                     </tbody>
                 </table>
