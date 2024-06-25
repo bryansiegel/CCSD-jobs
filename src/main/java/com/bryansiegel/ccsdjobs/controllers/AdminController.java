@@ -51,8 +51,7 @@ public class AdminController {
     @PostMapping("/admin/jobs/create")
     public String postCreate(@ModelAttribute Job job, @RequestParam String jobTitle, BindingResult result) {
 
-        if(result.hasErrors())
-        {
+        if (result.hasErrors()) {
             return "admin/jobs/create.html";
         }
 
@@ -75,17 +74,60 @@ public class AdminController {
 
     //update
     @PostMapping("admin/jobs/update/{id}")
-    public String updateJob(@ModelAttribute Job job, @PathVariable Long id, @RequestParam String jobTitle, BindingResult result) {
+    public String updateJob(
+            @ModelAttribute Job job,
+            @PathVariable Long id,
+            @RequestParam String jobTitle,
+            @RequestParam String referenceCode,
+            @RequestParam String division,
+            @RequestParam String classification,
+            @RequestParam String termsOfEmployment,
+            @RequestParam String flaStatus,
+            @RequestParam String applyLink,
+            @RequestParam String jobFamily,
+            @RequestParam String positionSummary,
+            @RequestParam String positionExpectations,
+            @RequestParam String distinguishingCharacteristics,
+            @RequestParam String knowledgeSkillsAndAbilities,
+            @RequestParam String documentsRequiredAtTimeOfApplication,
+            @RequestParam String examplesOfAssignedWorkAreas,
+            @RequestParam String workEnvironment,
+            @RequestParam String examplesOfEquipmentSuppliesUsedToPerformTasks,
+            @RequestParam String essentialDutiesAndResponsibilities,
+            @RequestParam String positionRequirements,
+            @RequestParam String salaryAndBenefits,
+            @RequestParam String aaEoeStatement,
 
-        if(result.hasErrors()) {
+            BindingResult result) {
+
+        if (result.hasErrors()) {
             return "admin/jobs/create.html";
         }
 
         Optional<Job> optionalJob = jobsRepository.findById(id);
 
-        if(optionalJob.isPresent()) {
+        if (optionalJob.isPresent()) {
             Job jobModel = optionalJob.get();
             jobModel.setJobTitle(jobTitle);
+            jobModel.setReferenceCode(referenceCode);
+            jobModel.setDivision(division);
+            jobModel.setClassification(classification);
+            jobModel.setTermsOfEmployment(termsOfEmployment);
+            jobModel.setFlaStatus(flaStatus);
+            jobModel.setApplyLink(applyLink);
+            jobModel.setJobFamily(jobFamily);
+            jobModel.setPositionSummary(positionSummary);
+            jobModel.setPositionExpectations(positionExpectations);
+            jobModel.setDistinguishingCharacteristics(distinguishingCharacteristics);
+            jobModel.setKnowledgeSkillsAndAbilities(knowledgeSkillsAndAbilities);
+            jobModel.setDocumentsRequiredAtTimeOfApplication(documentsRequiredAtTimeOfApplication);
+            jobModel.setExamplesOfAssignedWorkAreas(examplesOfAssignedWorkAreas);
+            jobModel.setWorkEnvironment(workEnvironment);
+            jobModel.setEssentialDutiesAndResponsibilities(essentialDutiesAndResponsibilities);
+            jobModel.setPositionRequirements(positionRequirements);
+            jobModel.setSalaryAndBenefits(salaryAndBenefits);
+            jobModel.setAaEoeStatement(aaEoeStatement);
+            jobModel.setExamplesOfEquipmentSuppliesUsedToPerformTasks(examplesOfEquipmentSuppliesUsedToPerformTasks);
 
             jobsRepository.save(jobModel);
         }
