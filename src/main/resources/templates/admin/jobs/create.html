@@ -50,7 +50,7 @@
 <!--                                    Job Category-->
                                     <div class="form-group">
                                         <label for="jobCategory">Job Category</label>
-                                        <select name="jobCategory" id="jobCategory" class="form-select">
+                                        <select name="jobCategory" id="jobCategory" class="form-select" required>
                                             <option name="defaultMessage" value="">Please Select A Value Below</option>
                                             <option name="admin" value="admin">Administrative Personnel</option>
                                             <option name="licensed" value="licensed">Licensed Personnel</option>
@@ -59,14 +59,19 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="classCode">Class Code</label>
+                                        <input type="text" name="classCode" th:field="${jobs.classCode}"
+                                               id="classCode"
+                                               placeholder="Class Code" class="form-control" />
+                                        <span th:if="${#fields.hasErrors('classCode')}"
+                                              th:errors="*{jobs.classCode}"></span>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="applyLink">Apply Link</label>
                                         <input type="text" name="applyLink" th:field="${jobs.applyLink}"
                                                id="applyLink"
-                                               placeholder="Apply Link" class="form-control"
-                                               required
-                                               oninvalid="this.setCustomValidity('Apply Link is Required')"
-                                               oninput="this.setCustomValidity('')"
-                                        />
+                                               placeholder="Apply Link" class="form-control textarea-editor" />
                                         <span th:if="${#fields.hasErrors('applyLink')}"
                                               th:errors="*{jobs.applyLink}"></span>
                                     </div>
@@ -74,11 +79,7 @@
                                         <label for="division">Division</label>
                                         <input type="text" name="division" th:field="${jobs.division}"
                                                id="division"
-                                               placeholder="Division" class="form-control"
-                                               required
-                                               oninvalid="this.setCustomValidity('Division is Required')"
-                                               oninput="this.setCustomValidity('')"
-                                        />
+                                               placeholder="Division" class="form-control" />
                                         <span th:if="${#fields.hasErrors('division')}"
                                               th:errors="*{jobs.division}"></span>
                                     </div>
@@ -86,11 +87,7 @@
                                         <label for="classification">Classification</label>
                                         <input type="text" name="classification" th:field="${jobs.classification}"
                                                id="classification"
-                                               placeholder="classification" class="form-control"
-                                               required
-                                               oninvalid="this.setCustomValidity('Classification is Required')"
-                                               oninput="this.setCustomValidity('')"
-                                        />
+                                               placeholder="classification" class="form-control" />
                                         <span th:if="${#fields.hasErrors('classification')}"
                                               th:errors="*{jobs.classification}"></span>
                                     </div>
@@ -98,11 +95,7 @@
                                         <label for="termsOfEmployment">Terms of Employment</label>
                                         <input type="text" name="termsOfEmployment" th:field="${jobs.termsOfEmployment}"
                                                id="termsOfEmployment"
-                                               placeholder="termsOfEmployment" class="form-control"
-                                               required
-                                               oninvalid="this.setCustomValidity('Terms of Employment is Required')"
-                                               oninput="this.setCustomValidity('')"
-                                        />
+                                               placeholder="termsOfEmployment" class="form-control textarea-editor" />
                                         <span th:if="${#fields.hasErrors('termsOfEmployment')}"
                                               th:errors="*{jobs.classification}"></span>
                                     </div>
@@ -110,11 +103,7 @@
                                         <label for="flaStatus">FLSA STATUS</label>
                                         <input type="text" name="flaStatus" th:field="${jobs.flaStatus}"
                                                id="flaStatus"
-                                               placeholder="flaStatus" class="form-control"
-                                               required
-                                               oninvalid="this.setCustomValidity('FLSA STATUS is Required')"
-                                               oninput="this.setCustomValidity('')"
-                                        />
+                                               placeholder="flaStatus" class="form-control" />
                                         <span th:if="${#fields.hasErrors('flaStatus')}"
                                               th:errors="*{jobs.classification}"></span>
                                     </div>
@@ -123,10 +112,7 @@
                                         <input type="text" name="jobFamily" th:field="${jobs.jobFamily}"
                                                id="jobFamily"
                                                placeholder="jobFamily" class="form-control"
-                                               required
-                                               oninvalid="this.setCustomValidity('Job Family is Required')"
-                                               oninput="this.setCustomValidity('')"
-                                        />
+                                              />
                                         <span th:if="${#fields.hasErrors('jobFamily')}"
                                               th:errors="*{jobs.jobFamily}"></span>
                                     </div>
@@ -135,9 +121,7 @@
                                         <input type="text" name="referenceCode" th:field="${jobs.referenceCode}"
                                                id="referenceCode"
                                                placeholder="referenceCode" class="form-control"
-                                               required
-                                               oninvalid="this.setCustomValidity('Reference Code is Required')"
-                                               oninput="this.setCustomValidity('')"
+
                                         />
                                         <span th:if="${#fields.hasErrors('referenceCode')}"
                                               th:errors="*{jobs.referenceCode}"></span>
@@ -148,9 +132,7 @@
                                         <textarea type="text" name="positionSummary" th:field="${jobs.positionSummary}"
                                                   id="positionSummary"
                                                   placeholder="positionSummary" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Position Summary is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('positionSummary')}"
                                               th:errors="*{jobs.positionSummary}"></span>
@@ -163,9 +145,7 @@
                                                   th:field="${jobs.essentialDutiesAndResponsibilities}"
                                                   id="essentialDutiesAndResponsibilities"
                                                   placeholder="essentialDutiesAndResponsibilities" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Essential Duties and Responsibilities is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('essentialDutiesAndResponsibilities')}"
                                               th:errors="*{jobs.essentialDutiesAndResponsibilities}"></span>
@@ -181,9 +161,7 @@
                                                   th:field="${jobs.positionRequirements}"
                                                   id="positionRequirements"
                                                   placeholder="positionRequirements" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Position Requirements is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('positionRequirements')}"
                                               th:errors="*{jobs.positionRequirements}"></span>
@@ -195,9 +173,7 @@
                                                   th:field="${jobs.preferredQualifications}"
                                                   id="preferredQualifications"
                                                   placeholder="Preferred Qualifications" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Preferred Qualifications is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('preferredQualifications')}"
                                               th:errors="*{jobs.preferredQualifications}"></span>
@@ -209,9 +185,7 @@
                                                   th:field="${jobs.salaryAndBenefits}"
                                                   id="salaryAndBenefits"
                                                   placeholder="salaryAndBenefits" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Salary and Benefits is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('salaryAndBenefits')}"
                                               th:errors="*{jobs.salaryAndBenefits}"></span>
@@ -222,9 +196,7 @@
                                         <textarea type="text" name="aaEoeStatement" th:field="${jobs.aaEoeStatement}"
                                                   id="aaEoeStatement"
                                                   placeholder="aaEoeStatement" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('AA/EOE Statement is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('aaEoeStatement')}"
                                               th:errors="*{jobs.aaEoeStatement}"></span>
@@ -237,9 +209,7 @@
                                                   th:field="${jobs.distinguishingCharacteristics}"
                                                   id="distinguishingCharacteristics"
                                                   placeholder="Distinguishing Characteristics" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Distinguishing Characteristics is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('distinguishingCharacteristics')}"
                                               th:errors="*{jobs.distinguishingCharacteristics}"></span>
@@ -252,9 +222,7 @@
                                                   th:field="${jobs.knowledgeSkillsAndAbilities}"
                                                   id="knowledgeSkillsAndAbilities"
                                                   placeholder="Knowledge, Skills, and Abilities (Position Expectations)" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Knowledge, Skills, and Abilities (Position Expectations) is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('knowledgeSkillsAndAbilities')}"
                                               th:errors="*{jobs.knowledgeSkillsAndAbilities}"></span>
@@ -266,9 +234,7 @@
                                                   th:field="${jobs.documentsRequiredAtTimeOfApplication}"
                                                   id="documentsRequiredAtTimeOfApplication"
                                                   placeholder="Document(s) Required at Time of Application" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Document(s) Required at Time of Application is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('documentsRequiredAtTimeOfApplication')}"
                                               th:errors="*{jobs.documentsRequiredAtTimeOfApplication}"></span>
@@ -280,9 +246,7 @@
                                                   th:field="${jobs.examplesOfAssignedWorkAreas}"
                                                   id="examplesOfAssignedWorkAreas"
                                                   placeholder="Examples of Assigned Work Areas" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Examples of Assigned Work Areas is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('examplesOfAssignedWorkAreas')}"
                                               th:errors="*{jobs.examplesOfAssignedWorkAreas}"></span>
@@ -294,9 +258,7 @@
                                                   th:field="${jobs.workEnvironment}"
                                                   id="workEnvironment"
                                                   placeholder="Work Environment" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Work Environment is Required')"
-                                                  oninput="this.setCustomValidity('')"
+
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('workEnvironment')}"
                                               th:errors="*{jobs.workEnvironment}"></span>
@@ -308,9 +270,6 @@
                                                   th:field="${jobs.examplesOfEquipmentSuppliesUsedToPerformTasks}"
                                                   id="examplesOfEquipmentSuppliesUsedToPerformTasks"
                                                   placeholder="Examples of Equipment/Supplies Used to Perform Tasks" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Examples of Equipment/Supplies Used to Perform Tasks is Required')"
-                                                  oninput="this.setCustomValidity('')"
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('examplesOfEquipmentSuppliesUsedToPerformTasks')}"
                                               th:errors="*{jobs.examplesOfEquipmentSuppliesUsedToPerformTasks}"></span>
@@ -322,9 +281,6 @@
                                                   th:field="${jobs.positionExpectations}"
                                                   id="positionExpectations"
                                                   placeholder="Position Expectations" class="form-control textarea-editor"
-                                                  required
-                                                  oninvalid="this.setCustomValidity('Position Expectations is Required')"
-                                                  oninput="this.setCustomValidity('')"
                                         ></textarea>
                                         <span th:if="${#fields.hasErrors('positionExpectations')}"
                                               th:errors="*{jobs.positionExpectations}"></span>
